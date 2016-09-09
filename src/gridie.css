@@ -1,0 +1,30 @@
+.cell {
+  transition: transform .2s ease, top .2s ease, left .2s ease;
+  box-sizing: border-box;
+}
+
+.cell:after {
+  content: "";
+  cursor: e-resize;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 10px;
+}
+
+body.resizing {
+  cursor: e-resize;
+}
+
+.cell.dragging, .cell.resizing {
+  transition: transform 0s linear;
+  z-index: 1000;
+  opacity: .5;
+}
+
+.placeholder {
+  outline: 2px dashed rgba(0, 0, 0, .8);
+  transition: transform .2s ease, top .2s ease, left .2s ease;
+  outline-offset: -2px;
+}
