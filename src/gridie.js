@@ -370,5 +370,11 @@
     return e.pageY;
   }
 
-  window.Gridie = Gridie;
+  if (typeof module !== 'undefined' && typeof exports !== 'undefined') {
+    module.exports = Gridie;
+  } else if (typeof define === 'function' && define.amd) {
+    define(function() { return Gridie; });
+  } else {
+    this.Gridie = Gridie;
+  }
 }());

@@ -1,0 +1,23 @@
+{
+  "name": "gridie",
+  "version": "0.1.0",
+  "description": "Standalone library for grid layout building",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezakto/gridie.js.git"
+  },
+  "keywords": [
+    "grid",
+    "layout",
+    "drag",
+    "draggable",
+    "resize",
+    "resizable"
+  ],
+  "author": "Nicolás Arias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezakto/gridie.js/issues"
+  },
+  "homepage": "https://github.com/ezakto/gridie.js#readme"
+}
