@@ -84,6 +84,8 @@
     var columnWidthPx;
 
     function mousedown(e) {
+      if (item.resize === false) return;
+
       var x = pageX(e);
       var y = pageY(e);
       var rect = item.elem.getBoundingClientRect();
@@ -172,6 +174,8 @@
     var options = this.options;
 
     function mousedown(e){
+      if (item.drag === false) return;
+      
       if (options.drag && options.drag.handle) {
         if (!e.target.matches(options.drag.handle)) return;
       }
