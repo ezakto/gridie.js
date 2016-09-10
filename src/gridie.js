@@ -126,8 +126,8 @@
       var diff = pageX(e) - rect.left;
       var wall = containerRect.left + containerRect.width;
 
-      if (diff < columnWidthPx) return;
       if (pageX(e) > wall) return;
+      if (diff < columnWidthPx) diff = columnWidthPx;
 
       var width = (columnWidthPx * Math.round(diff / columnWidthPx)) / columnWidthPx;
 
