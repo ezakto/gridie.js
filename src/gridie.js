@@ -199,7 +199,7 @@
       targetY = item.y;
       diffX = pageX(e);
       diffY = pageY(e);
-      mouseDiff = pageY(e) - rect.top;
+      mouseDiff = pageY(e) - rect.top - item.getHeight()/2;
 
       columnWidthPx = container.getBoundingClientRect().width / options.columns;
 
