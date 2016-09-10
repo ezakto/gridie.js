@@ -11,14 +11,11 @@
   GridieItem.prototype.setPosition = function(x, y) {
     this.x = parseInt(x);
     this.y = parseInt(y);
-    this.elem.setAttribute('data-x', this.x);
-    this.elem.setAttribute('data-y', this.y);
     this.rendered = false;
   };
 
   GridieItem.prototype.setWidth = function(width) {
     this.width = parseInt(width);
-    this.elem.setAttribute('data-width', this.width);
     this.rendered = false;
   };
 
@@ -268,6 +265,9 @@
       item.elem.style.left = 100 / this.options.columns * pos.x + '%';
       item.elem.style.top = pos.y + 'px';
       item.elem.style.transform = 'translate(0px, 0px)';
+      item.elem.setAttribute('data-x', pos.x);
+      item.elem.setAttribute('data-y', pos.y);
+      item.elem.setAttribute('data-width', pos.width);
       item.rendered = true;
     }, this);
 
