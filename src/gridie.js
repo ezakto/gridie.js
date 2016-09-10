@@ -5,6 +5,7 @@
     this.x = elem.x || 0;
     this.y = elem.y || 0;
     this.width = elem.width || 1;
+    this.rendered = false;
   }
 
   GridieItem.prototype.setPosition = function(x, y) {
@@ -12,11 +13,13 @@
     this.y = parseInt(y);
     this.elem.setAttribute('data-x', this.x);
     this.elem.setAttribute('data-y', this.y);
+    this.rendered = false;
   };
 
   GridieItem.prototype.setWidth = function(width) {
     this.width = parseInt(width);
     this.elem.setAttribute('data-width', this.width);
+    this.rendered = false;
   };
 
   GridieItem.prototype.getPosition = function() {
@@ -258,12 +261,14 @@
 
   Gridie.prototype.render = function() {
     this.matrix.forEach(function(item) {
+      if (item.rendered) return;
       var pos = item.getPosition();
       item.elem.style.position = 'absolute';
       item.elem.style.width = item.getWidth() * 100 / this.options.columns + '%';
       item.elem.style.left = 100 / this.options.columns * pos.x + '%';
       item.elem.style.top = pos.y + 'px';
       item.elem.style.transform = 'translate(0px, 0px)';
+      item.rendered = true;
     }, this);
 
     var gridHeight = 0;
