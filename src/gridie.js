@@ -117,8 +117,8 @@
 
       item.elem.classList.add('resizing');
       document.body.classList.add('resizing');
-      document.addEventListener('mousemove', mousemove, false);
-      document.addEventListener('mouseup', mouseup, false);
+      addEventListener(document, 'mousemove', mousemove, false);
+      addEventListener(document, 'mouseup', mouseup, false);
     }
 
     function mousemove(e) {
@@ -151,14 +151,14 @@
       self.shiftOverlaps(item);
       self.render();
 
-      document.removeEventListener('mousemove', mousemove);
-      document.removeEventListener('mouseup',  mouseup);
-      document.removeEventListener('touchmove', mousemove);
-      document.removeEventListener('touchend',  mouseup);
+      removeEventListener(document, 'mousemove', mousemove);
+      removeEventListener(document, 'mouseup',  mouseup);
+      removeEventListener(document, 'touchmove', mousemove);
+      removeEventListener(document, 'touchend',  mouseup);
     }
 
-    item.elem.addEventListener('mousedown', mousedown, false);
-    item.elem.addEventListener('touchstart', mousedown, false);
+    addEventListener(item.elem, 'mousedown', mousedown, false);
+    addEventListener(item.elem, 'touchstart', mousedown, false);
   };
 
   Gridie.prototype.draggable = function(item) {
@@ -206,10 +206,10 @@
 
       item.elem.classList.add('dragging');
       document.body.classList.add('dragging');
-      document.addEventListener('mousemove', mousemove, false);
-      document.addEventListener('mouseup',  mouseup, false);
-      document.addEventListener('touchmove', mousemove, false);
-      document.addEventListener('touchend',  mouseup, false);
+      addEventListener(document, 'mousemove', mousemove, false);
+      addEventListener(document, 'mouseup',  mouseup, false);
+      addEventListener(document, 'touchmove', mousemove, false);
+      addEventListener(document, 'touchend',  mouseup, false);
     }
 
     function mousemove(e){
@@ -243,14 +243,14 @@
       self.shiftOverlaps(item);
       self.render();
 
-      document.removeEventListener('mousemove', mousemove);
-      document.removeEventListener('mouseup',  mouseup);
-      document.removeEventListener('touchmove', mousemove);
-      document.removeEventListener('touchend',  mouseup);
+      removeEventListener(document, 'mousemove', mousemove);
+      removeEventListener(document, 'mouseup',  mouseup);
+      removeEventListener(document, 'touchmove', mousemove);
+      removeEventListener(document, 'touchend',  mouseup);
     }
 
-    item.elem.addEventListener('mousedown', mousedown, false);
-    item.elem.addEventListener('touchstart', mousedown, false);
+    addEventListener(item.elem, 'mousedown', mousedown, false);
+    addEventListener(item.elem, 'touchstart', mousedown, false);
   };
 
   Gridie.prototype.refresh = function() {
@@ -373,6 +373,14 @@
       return e.changedTouches[0].pageY;
     }
     return e.pageY;
+  }
+
+  function addEventListener(element, event, listener) {
+    return element.addEventListener(event, listener, false);
+  }
+
+  function removeEventListener(element, event, listener) {
+    return element.removeEventListener(event, listener);
   }
 
   if (typeof module !== 'undefined' && typeof exports !== 'undefined') {
