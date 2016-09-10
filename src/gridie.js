@@ -1,3 +1,4 @@
+/* global document, module, define */
 (function(){
   function GridieItem(elem) {
     this.elem = elem.elem || elem;
@@ -49,7 +50,6 @@
     container.style.position = 'relative';
 
     if (options.init) {
-      var idx = 0;
       this.init(Array.prototype.map.call(container.querySelectorAll(options.selector), function(elem){
         return {
           elem: elem,
@@ -65,7 +65,6 @@
       // var idx = 0;
       items.forEach(function(elem) {
         var item = new GridieItem(elem);
-        // if (item.elem.dataset.width) item.setWidth(item.elem.dataset.width);
         item.elem.style.width = item.getWidth() * 100 / this.options.columns + '%';
         // this.insert(item, item.elem.dataset.x || (idx++ % this.options.columns), item.elem.dataset.y);
         this.insert(item, item.x, item.y);
@@ -80,14 +79,13 @@
     var options = this.options;
     var container = this.options.container;
     var placeholder = this._placeholder;
-    var targetWidth = item.width;
     var columnWidthPx;
 
     function mousedown(e) {
       if (item.resize === false) return;
 
       var x = pageX(e);
-      var y = pageY(e);
+      // var y = pageY(e);
       var rect = item.elem.getBoundingClientRect();
 
       if (x < (rect.left+rect.width-10) || x > (rect.left+rect.width)) {
@@ -96,8 +94,6 @@
 
       e.preventDefault();
       e.stopImmediatePropagation();
-
-      var containerRect = container.getBoundingClientRect();
 
       placeholder.elem.style.position = 'absolute';
       placeholder.elem.style.left = item.elem.style.left;
@@ -140,7 +136,7 @@
       item.elem.style.width = diff + 'px';
     }
 
-    function mouseup(e) {
+    function mouseup() {
       document.body.classList.remove('resizing');
       item.elem.classList.remove('resizing');
       item.setWidth(placeholder.width);
@@ -210,13 +206,12 @@
       document.addEventListener('mouseup',  mouseup, false);
       document.addEventListener('touchmove', mousemove, false);
       document.addEventListener('touchend',  mouseup, false);
-    };
+    }
 
     function mousemove(e){
       var rect = container.getBoundingClientRect();
       var x = Math.floor((pageX(e) - rect.left) / columnWidthPx);
       var top = self.getColumnHeight(targetX, pageY(e) - rect.top - mouseDiff);
-      var height = 0;
 
       if (x < 0) x = 0;
       if (x >= options.columns - item.width) x = options.columns - item.width;
@@ -231,9 +226,9 @@
       }
 
       item.elem.style.transform = 'translate('+(pageX(e)-diffX)+'px, '+(pageY(e)-diffY)+'px)';
-    };
+    }
 
-    function mouseup(e){
+    function mouseup(){
       document.body.classList.remove('dragging');
       item.elem.classList.remove('dragging');
       item.elem.style.transform = 'translate(0px, 0px)';
@@ -248,7 +243,7 @@
       document.removeEventListener('mouseup',  mouseup);
       document.removeEventListener('touchmove', mousemove);
       document.removeEventListener('touchend',  mouseup);
-    };
+    }
 
     item.elem.addEventListener('mousedown', mousedown, false);
     item.elem.addEventListener('touchstart', mousedown, false);
@@ -262,7 +257,7 @@
   };
 
   Gridie.prototype.render = function() {
-    this.matrix.forEach(function(item, idx) {
+    this.matrix.forEach(function(item) {
       var pos = item.getPosition();
       item.elem.style.position = 'absolute';
       item.elem.style.width = item.getWidth() * 100 / this.options.columns + '%';
