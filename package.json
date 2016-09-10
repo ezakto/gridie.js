@@ -1,7 +1,7 @@
 {
   "name": "gridie",
   "main": "index.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Standalone library for grid layout building",
   "repository": {
     "type": "git",
