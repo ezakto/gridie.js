@@ -115,8 +115,8 @@
       containerRect = container.getBoundingClientRect();
       columnWidthPx = containerRect.width / options.columns;
 
-      document.body.classList.add('resizing');
       item.elem.classList.add('resizing');
+      document.body.classList.add('resizing');
       document.addEventListener('mousemove', mousemove, false);
       document.addEventListener('mouseup', mouseup, false);
     }
@@ -162,16 +162,16 @@
   };
 
   Gridie.prototype.draggable = function(item) {
+    var self = this;
+    var placeholder = this._placeholder;
+    var container = this.options.container;
+    var options = this.options;
     var diffX;
     var diffY;
     var mouseDiff;
     var columnWidthPx;
     var targetX;
     var targetY;
-    var placeholder = this._placeholder;
-    var container = this.options.container;
-    var self = this;
-    var options = this.options;
 
     function mousedown(e){
       if (item.drag === false) return;
@@ -204,8 +204,8 @@
 
       columnWidthPx = container.getBoundingClientRect().width / options.columns;
 
-      document.body.classList.add('dragging');
       item.elem.classList.add('dragging');
+      document.body.classList.add('dragging');
       document.addEventListener('mousemove', mousemove, false);
       document.addEventListener('mouseup',  mouseup, false);
       document.addEventListener('touchmove', mousemove, false);
@@ -306,14 +306,12 @@
   };
 
   Gridie.prototype.extract = function(item) {
-    var ret;
     this.matrix.some(function(item2, idx) {
       if (item === item2) {
-        ret = this.matrix.splice(idx, 1)[0];
-        return true;
+        return this.matrix.splice(idx, 1)[0];
       }
     }, this);
-    return ret;
+    return item;
   };
 
   Gridie.prototype.insert = function(item, x, y) {
