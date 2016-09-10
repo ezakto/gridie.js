@@ -166,8 +166,8 @@
     var diffY;
     var mouseDiff;
     var columnWidthPx;
-    var targetX = item.x;
-    var targetY = item.y;
+    var targetX;
+    var targetY;
     var placeholder = this._placeholder;
     var container = this.options.container;
     var self = this;
@@ -175,7 +175,7 @@
 
     function mousedown(e){
       if (item.drag === false) return;
-      
+
       if (options.drag && options.drag.handle) {
         if (!e.target.matches(options.drag.handle)) return;
       }
@@ -196,6 +196,8 @@
       self.insert(placeholder, item.x, item.y);
       self.render();
 
+      targetX = item.x;
+      targetY = item.y;
       diffX = pageX(e);
       diffY = pageY(e);
       mouseDiff = pageY(e) - rect.top;
