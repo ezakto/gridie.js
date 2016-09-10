@@ -223,7 +223,6 @@
       if (targetX !== x || targetY !== top) {
         targetX = x;
         targetY = top;
-        self.extract(placeholder);
         self.insert(placeholder, targetX, targetY);
         self.shiftOverlaps(placeholder);
         self.render();
