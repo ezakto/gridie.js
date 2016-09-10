@@ -83,6 +83,7 @@
     var container = this.options.container;
     var placeholder = this._placeholder;
     var columnWidthPx;
+    var containerRect;
 
     function mousedown(e) {
       if (item.resize === false) return;
@@ -111,7 +112,8 @@
       self.insert(placeholder, item.x, item.y);
       self.render();
 
-      columnWidthPx = container.getBoundingClientRect().width / options.columns;
+      containerRect = container.getBoundingClientRect();
+      columnWidthPx = containerRect.width / options.columns;
 
       document.body.classList.add('resizing');
       item.elem.classList.add('resizing');
@@ -120,7 +122,6 @@
     }
 
     function mousemove(e) {
-      var containerRect = container.getBoundingClientRect();
       var rect = item.elem.getBoundingClientRect();
       var diff = pageX(e) - rect.left;
       var wall = containerRect.left + containerRect.width;
