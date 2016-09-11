@@ -1,6 +1,6 @@
 # gridie.js
 
-gridie.js helps you building dynamic draggable/resizable layouts quickly. It's a standalone library inspired in [gridstack.js](https://github.com/troolee/gridstack.js).
+gridie.js helps you building dynamic draggable/resizable layouts quickly. It's a standalone library inspired in [gridstack.js](https://github.com/troolee/gridstack.js) and [packery](https://github.com/metafizzy/packery).
 It features multiple columns, non-fixed items height, mobile support and a quite small size (~6kb minified).
 
 ## Install
