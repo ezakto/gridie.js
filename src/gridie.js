@@ -116,6 +116,8 @@
       document.body.classList.add('resizing');
       addEventListener(document, 'mousemove', mousemove, false);
       addEventListener(document, 'mouseup', mouseup, false);
+      addEventListener(document, 'touchmove', mousemove, false);
+      addEventListener(document, 'touchend',  mouseup, false);
     }
 
     function mousemove(e) {
