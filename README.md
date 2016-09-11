@@ -6,7 +6,7 @@ It features multiple columns, non-fixed items height, mobile support and a quite
 ## Install
 
 Just include `gridie.js` and `gridie.css` between your stuff and you're ready to go.
-Gridie it's also available as an npm module you can use along with browserify. Just `$ npm install gridie` it.
+Gridie is also available as an npm module you can use along with browserify. Just `$ npm install gridie` it.
 
 ## Usage
 
@@ -26,7 +26,7 @@ The minimal data each item needs is a `data-x` attribute, representing a column.
 
 * `data-x` item's horizontal position. This represents a column number. Required
 * `data-y` item's vertical position **in pixels**. If not set, elements are stacked in order
-* `data-width` item's width in columns (ie not pixels). Defaults to `1`
+* `data-width` item's width in columns (ie. not pixels). Defaults to `1`
 
 Then you can initialize the layout passing the container element, and an optional settings object:
 
